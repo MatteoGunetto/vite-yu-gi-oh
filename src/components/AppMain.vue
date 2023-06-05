@@ -1,32 +1,43 @@
 <script>
+import { store } from '../store';
     export default {
-        name: 'AppMain'
+        name: 'AppMain',
+        data(){
+            return{
+                store
+            }
+        }
     }
 </script>
-
 <template>
-
-    <main class="vh-100 py-4">
-
-        <div class="container">
-            <div class="mb-3">
-                <select name="archetype" id="archetype">
-                    <option value="alien">Alien</option>
-                </select>
+    <main class="min-vh-100 py-4">
+        <div class="container overflow-hidden">
+            <div class="row gx-2">
+                <div class="col-auto mb-3">
+                    <select name="archetype" id="archetype">
+                        <option value="alien">Alien</option>
+                    </select>
+                </div>
             </div>
-            <div class="my-card-container d-flex flex-wrap justify-content-around align-items-start py-3 px-4">
-                <div class="single-card text-center p-3">
-                    <img src="https://m.media-amazon.com/images/I/51n9U3qo-iL._AC_.jpg" alt="">
-                    <h5 class="text-white text-uppercase">nome carta</h5>
-                    <span> race carta</span>
+            <div class="row my-card-container py-3 px-4 gx-2">
+                <div class="col-12 bg-dark p-1">
+                    <h3 class="text-white">
+                        Found
+                        <span> {{ store.deck.length }}</span>
+                        cards
+                    </h3>
+                </div>
+                <div class="single-card text-center col-3 pb-2" v-for="element in store.deck">
+                    <img :src="element.card_images[0].image_url" :alt="element.name">
+                    <h5 class="text-white text-uppercase">
+                        {{ element.name }}
+                    </h5>
+                    <span> {{ element.archetype }}</span>
                 </div>
             </div>
         </div>
-
     </main>
-
 </template>
-
 <style lang="scss" scoped>
 @use '../styles/main.scss' as *;
     main{
