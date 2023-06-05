@@ -49,7 +49,7 @@ import { store } from '../store';
     div.single-card{
         background-color: $my-primary-color;
         img{
-            height: 400px;
+            height: 410px;
         }
     }
 </style>
