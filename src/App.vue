@@ -19,14 +19,14 @@ import { store } from './store';
         axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
           .then((response) => {
             console.log(response.data.data.slice(0, 40));
-            this.store.deck = response.data.data.slice(0, 40);
+            this.store.deck = response.data.data;
           });
       },
       getMyArchetypes(){
         axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
           .then((response) => {
             console.log(response.data.slice(0,40));
-            this.store.archetypeDeck = response.data.slice(0,40);
+            this.store.archetypeDeck = response.data;
           });
       }
     },
