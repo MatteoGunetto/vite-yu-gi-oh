@@ -35,14 +35,23 @@ import { store } from './store';
       this.getMyArchetypes()
     },
     computed: {
+      myResearch(){
+        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php',{
+          params: {
+            archetype : this.store.mySelect
+          }
+        })
+          .then((response) => {
+            this.store.deck = response.data.data;
+          });
+      }
     }
   }
 </script>
 
 <template>
   <AppHeader/>
-  <AppMain />
-
+  <AppMain @search="myResearch" />
 </template>
 
 <style lang="scss">

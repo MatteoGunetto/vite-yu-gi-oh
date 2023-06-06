@@ -14,8 +14,13 @@ import { store } from '../store';
         <div class="container overflow-hidden">
             <div class="row gx-2">
                 <div class="col-auto mb-3">
-                    <select name="archetype" id="archetype">
-                        <option v-for="element in store.archetypeDeck" :value="element">{{ element.archetype_name }}</option>
+                    <select name="archetype" id="archetype"
+                    @change="$emit('search')"
+                    v-model="store.mySelect">
+                        <option v-for="element in store.archetypeDeck"
+                        :value="element.archetype_name">
+                            {{ element.archetype_name }}
+                        </option>
                     </select>
                 </div>
             </div>
