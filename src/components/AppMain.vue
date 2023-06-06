@@ -15,7 +15,7 @@ import { store } from '../store';
             <div class="row gx-2">
                 <div class="col-auto mb-3">
                     <select name="archetype" id="archetype">
-                        <option value="alien">Alien</option>
+                        <option v-for="element in store.archetypeDeck" :value="element">{{ element.archetype_name }}</option>
                     </select>
                 </div>
             </div>
@@ -27,7 +27,7 @@ import { store } from '../store';
                         cards
                     </h3>
                 </div>
-                <div class="single-card text-center col-3 pb-2" v-for="element in store.deck">
+                <div class="single-card text-center pb-2" v-for="element in store.deck">
                     <img :src="element.card_images[0].image_url" :alt="element.name">
                     <h5 class="text-white text-uppercase">
                         {{ element.name }}
@@ -44,12 +44,15 @@ import { store } from '../store';
         background-color: $my-primary-color;
     }
     div.my-card-container{
+
         background-color: white;
     }
     div.single-card{
+        width: calc(100% / 5);
         background-color: $my-primary-color;
+        border-bottom: 15px white solid;
         img{
-            height: 410px;
+            height: 300px;
         }
     }
 </style>
